@@ -33,14 +33,6 @@ app.UseAuthorization();
 // Note a ligeira mudança na declaração da rota padrão
 // No caso de precisar mapear mais de uma rota duplique o código abaixo
 app.MapControllerRoute(
-    name: "modulos",
-    pattern: "Gestão/{controller=Home}/{action=Index}/{id?}");
-
-app.MapControllerRoute(
-    name: "categoria",
-    pattern: "{controller=Home}/{action=Index}/{id}/{categoria?}");
-
-app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 

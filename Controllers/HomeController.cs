@@ -20,7 +20,12 @@ namespace MinhaDemoMvc.Controllers
 
         public IActionResult Privacy()
         {
-            return View();
+            //return Json("{'nome':'Eduardo'}");
+            /*var fileBytes = System.IO.File.ReadAllBytes(@"C:\AiOLog.txt");
+            var fileName = "teste.txt";
+            return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);*/
+
+            return Content("Teste Content");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

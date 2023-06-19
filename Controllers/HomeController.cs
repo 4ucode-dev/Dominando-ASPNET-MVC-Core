@@ -13,13 +13,33 @@ namespace MinhaDemoMvc.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index(string id, string categoria)
+        public IActionResult Index()
         {
-            return View();
+            var filme = new Filme
+            {
+                Titulo = "Oi",
+                DataLancamento = DateTime.Now,
+                Genero = null,
+                Avaliacao = 10,
+                Valor = 20000
+            };
+
+            return RedirectToAction("Privacy", filme);
+            //return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Privacy(Filme filme)
         {
+            if (ModelState.IsValid)
+            {
+
+            }
+
+            foreach (var error in ModelState.Values.SelectMany(m => m.Errors))
+            {
+                Console.WriteLine(error.ErrorMessage);
+            }
+
             return View();
         }
 

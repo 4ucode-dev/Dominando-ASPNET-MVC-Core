@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/MinhaDemoMvc.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/font-awesome/css/all.min.css">
 </head>
 <body>
     <header>
@@ -27,6 +28,8 @@
                         </li>
                     </ul>
                 </div>
+
+                <vc:Carrinho></vc:Carrinho>
             </div>
         </nav>
     </header>
@@ -40,6 +43,7 @@
         <div class="container">
             &copy; 2023 - MinhaDemoMvc - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
+        <vc:Carrinho></vc:Carrinho>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

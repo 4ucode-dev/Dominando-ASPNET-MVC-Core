@@ -2,51 +2,50 @@
 using MinhaDemoMvc.Models;
 using System.Diagnostics;
 
-namespace MinhaDemoMvc.Controllers
+namespace MinhaDemoMvc.Controllers;
+
+public class HomeController : Controller
 {
-    public class HomeController : Controller
+    private readonly ILogger<HomeController> _logger;
+
+    public HomeController(ILogger<HomeController> logger)
     {
-        private readonly ILogger<HomeController> _logger;
+        _logger = logger;
+    }
 
-        public HomeController(ILogger<HomeController> logger)
+    public IActionResult Index()
+    {
+        var filme = new Filme
         {
-            _logger = logger;
+            Titulo = "Oi",
+            DataLancamento = DateTime.Now,
+            Genero = null,
+            Avaliacao = 10,
+            Valor = 20000
+        };
+
+        return RedirectToAction("Privacy", filme);
+        //return View();
+    }
+
+    public IActionResult Privacy(Filme filme)
+    {
+        if (ModelState.IsValid)
+        {
+
         }
 
-        public IActionResult Index()
+        foreach (var error in ModelState.Values.SelectMany(m => m.Errors))
         {
-            var filme = new Filme
-            {
-                Titulo = "Oi",
-                DataLancamento = DateTime.Now,
-                Genero = null,
-                Avaliacao = 10,
-                Valor = 20000
-            };
-
-            return RedirectToAction("Privacy", filme);
-            //return View();
+            Console.WriteLine(error.ErrorMessage);
         }
 
-        public IActionResult Privacy(Filme filme)
-        {
-            if (ModelState.IsValid)
-            {
+        return View();
+    }
 
-            }
-
-            foreach (var error in ModelState.Values.SelectMany(m => m.Errors))
-            {
-                Console.WriteLine(error.ErrorMessage);
-            }
-
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+    public IActionResult Error()
+    {
+        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
 }

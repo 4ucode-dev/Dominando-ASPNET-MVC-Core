@@ -1,19 +1,28 @@
-// O builder é responsável por fornecer os métodos de controle
-// dos serviços e demais funcionalidades na configuração da App
+ï»¿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using MinhaDemoMvc.Data;
+// O builder ï¿½ responsï¿½vel por fornecer os mï¿½todos de controle
+// dos serviï¿½os e demais funcionalidades na configuraï¿½ï¿½o da App
 var builder = WebApplication.CreateBuilder(args);
+// O builder ï¿½ responsï¿½vel por fornecer os mï¿½todos de controle
+// dos serviï¿½os e demais funcionalidades na configuraï¿½ï¿½o da App
+builder.Services.AddDbContext<MinhaDemoMvcContext>(options =>
+// O builder ï¿½ responsï¿½vel por fornecer os mï¿½todos de controle
+// dos serviï¿½os e demais funcionalidades na configuraï¿½ï¿½o da App
+    options.UseSqlServer(builder.Configuration.GetConnectionString("MinhaDemoMvcContext") ?? throw new InvalidOperationException("Connection string 'MinhaDemoMvcContext' not found.")));
 
-// Daqui para baixo é conteúdo que vinha dentro do método  ConfigureServices() na antiga Startup.cs
-// Nesta area adicionamos serviços ao pipeline
+// Daqui para baixo ï¿½ conteï¿½do que vinha dentro do mï¿½todo  ConfigureServices() na antiga Startup.cs
+// Nesta area adicionamos serviï¿½os ao pipeline
 
-// Essa é a nova forma de adicionar o MVC ao projeto
-// Não se usa mais services.AddMvc();
+// Essa ï¿½ a nova forma de adicionar o MVC ao projeto
+// Nï¿½o se usa mais services.AddMvc();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-// Essa linha precisa sempre ficar por último na configuração dos serviços
+// Essa linha precisa sempre ficar por ï¿½ltimo na configuraï¿½ï¿½o dos serviï¿½os
 var app = builder.Build();
 
-// Daqui para baixo é conteúdo que vinha dentro do método Configure() na antiga Startup.cs
+// Daqui para baixo ï¿½ conteï¿½do que vinha dentro do mï¿½todo Configure() na antiga Startup.cs
 // Aqui se configura comportamentos do request dentro do pipeline
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -30,11 +39,11 @@ app.UseRouting();
 
 app.UseAuthorization();
 
-// Note a ligeira mudança na declaração da rota padrão
-// No caso de precisar mapear mais de uma rota duplique o código abaixo
+// Note a ligeira mudanï¿½a na declaraï¿½ï¿½o da rota padrï¿½o
+// No caso de precisar mapear mais de uma rota duplique o cï¿½digo abaixo
 app.MapControllerRoute(
     name: "modulos",
-    pattern: "Gestão/{controller=Home}/{action=Index}/{id?}");
+    pattern: "Gestï¿½o/{controller=Home}/{action=Index}/{id?}");
 
 app.MapControllerRoute(
     name: "categoria",
@@ -44,5 +53,5 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-// Essa linha precisa sempre ficar por último na configuração do request pipeline
+// Essa linha precisa sempre ficar por ï¿½ltimo na configuraï¿½ï¿½o do request pipeline
 app.Run();

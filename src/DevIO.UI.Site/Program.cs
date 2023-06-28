@@ -13,6 +13,11 @@ if (app.Environment.IsDevelopment())
     app.UseDeveloperExceptionPage();
 }
 
+app.UseHttpsRedirection();
+app.UseStaticFiles();
+
+app.UseRouting();
+
 // Adicionando Rota padrão
 app.MapControllerRoute(
     name: "default",

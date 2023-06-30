@@ -3,16 +3,19 @@
     <title>@ViewData["Title"] - Minha App Modelo</title>
 
     <environment include="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.css"/>
-        <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.css"/>
+        <link rel="stylesheet" href="~/css/site_bundle.min.css" />
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
                 asp-fallback-href="~/lib/bootstrap/css/bootstrap.css"
                 asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
                 crossorigin="anonymous"
-                integrity="sha252-=" />
+                />
+        <link href="~/css/site.css" rel="stylesheet" />
     </environment>
+
+    <link rel="stylesheet" href="~/lib/font-awesome/css/all.css"/>
+
 </head>
 <body>
 
@@ -42,22 +45,23 @@
 </footer>
 
 <environment include="Development">
-    <script src="~/lib/jquery/jquery.js"></script>
-    <script src="~/lib/bootstrap/js/bootstrap.bundle.js"></script>
+    <script src="~/js/site_bundle.min.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.min.js"></script>
 </environment>
 <environment exclude="Development">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
             asp-fallback-src="~/lib/jquery/jquery.js"
             asp-fallback-test="window.jQuery"
             crossorigin="anonymous"
-            integrity="sha252-=">
+            >
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.bundle.min.js"
             asp-fallback-src="~/lib/bootstrap/js/bootstrap.bundle.js"
             asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
             crossorigin="anonymous"
-            integrity="sha252-=">
+            >
     </script>
+    <script src="~/js/site.js"></script>
 </environment>
 
 

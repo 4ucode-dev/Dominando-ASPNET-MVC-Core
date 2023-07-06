@@ -36,6 +36,7 @@ app.MapControllerRoute(
 
 // Rota de áreas especializadas
 app.MapAreaControllerRoute("AreaProdutos", "Produtos", "Produtos/{controller=Cadastro}/{action=Index}/{id?}");
+app.MapAreaControllerRoute("AreaVendas", "Vendas", "Vendas/{controller=Pedidos}/{action=Index}/{id?}");
 
 // Colocando a App para rodar
 app.Run();

@@ -1,4 +1,5 @@
 // Tudo inicia a partir do builder
+using DevIO.UI.Site.Data;
 using Microsoft.AspNetCore.Mvc.Razor;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +15,8 @@ builder.Services.Configure<RazorViewEngineOptions>(options =>
 
 // Adicionando o MVC ao container
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddTransient<IPedidoRepository, PedidoRepository>();
 
 // Realizando o buid das configurações que resultará na App
 var app = builder.Build();
